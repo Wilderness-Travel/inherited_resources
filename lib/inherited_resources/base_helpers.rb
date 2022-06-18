@@ -224,6 +224,9 @@ module InheritedResources
       # Set resource ivar based on the current resource controller.
       #
       def set_resource_ivar(resource) #:nodoc:
+        # VRN - decorate the @resource
+        instance_variable_set('@resource', resource.decorate) rescue resource
+        # VRNEOC
         instance_variable_set("@#{resource_instance_name}", resource)
       end
 
